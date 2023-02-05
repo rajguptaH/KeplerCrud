@@ -4,7 +4,7 @@ namespace KeplerCrud.Utility
 {
     public class Kepler22
     {
-        public string GetTableName<T>() where T : class
+        public static string GetTableName<T>() where T : class
         {
             var tableAttribute = typeof(T).GetCustomAttribute(typeof(KeplerTableAttribute),true) as KeplerTableAttribute;
             if (tableAttribute != null)
@@ -13,7 +13,7 @@ namespace KeplerCrud.Utility
             }
             return null;
         }
-        public List<string> GetDbColumnName<T>()
+        public static List<string> GetDbColumnName<T>()
         {
             var _columns = new List<string>();
             PropertyInfo[] propertieList = typeof(T).GetProperties();

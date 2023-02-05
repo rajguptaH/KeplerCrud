@@ -12,4 +12,8 @@
     <Copyright>MIT</Copyright>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Service\Data\Interface\" />
+  </ItemGroup>
+
 </Project>
