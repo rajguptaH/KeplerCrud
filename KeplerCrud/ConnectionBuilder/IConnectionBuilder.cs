@@ -4,6 +4,7 @@ namespace KeplerCrud.ConnectionBuilder
 {
     public interface IConnectionBuilder
     {
-        public IDbConnection Connection { get; }
+        public IDbConnection GetConnection { get; }
+        public string ConString { get; }
     }
 }

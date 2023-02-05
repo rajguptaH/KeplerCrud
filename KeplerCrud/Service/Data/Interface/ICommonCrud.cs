@@ -2,13 +2,60 @@
 {
     public interface ICommonCrud<T>
     {
-        Task<List<T>> GetAllAsync();
-        Task<List<T>> GetAllAsync(string where,int id);
-        Task<List<T>> GetAllAsync(string where1,int id1,string where2,int id2);
-        Task<T> GetAsync(string where1,int id1,string where2,int id2);
-        Task<T> GetAsync(int id);
-        Task<T> GetAsync(string where, int id);
-        Task<bool> InsertAsync(T model);
-        Task<bool> UpdateAsync(T model);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        List<T> GetAllAsync();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="where"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        List<T> GetAllAsync(string where,string value);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="where"></param>
+        /// <param name="value"></param>
+        /// <param name="where1"></param>
+        /// <param name="value1"></param>
+        /// <returns></returns>
+        List<T> GetAllAsync(string where,string value,string where1,string value1);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="where"></param>
+        /// <param name="value"></param>
+        /// <param name="where1"></param>
+        /// <param name="value1"></param>
+        /// <returns></returns>
+        T GetAsync(string where,string value,string where1,string value1);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        T GetAsync(string value);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="where"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        T GetAsync(string where, string value);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        bool InsertAsync(T model);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        bool UpdateAsync(T model);
     }
 }

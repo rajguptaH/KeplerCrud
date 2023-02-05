@@ -2,7 +2,7 @@
 using KeplerCrud.ConnectionBuilder;
 using KeplerCrud.Utility;
 using System.Data;
-
+using KeplerCrud.Service.Data.Interface;
 namespace KeplerCrud.Service.Data
 {
     public class CommonCrud<T> : ICommonCrud<T> where T:class
@@ -21,49 +21,49 @@ namespace KeplerCrud.Service.Data
         public List<T> GetAllAsync()
         {
             string query = $"SELECT * FROM [{tableName}]";
-            using IDbConnection con = _connectionBuilder.Connection;
+            using IDbConnection con = _connectionBuilder.GetConnection;
             return  con.Query<T>(query).ToList();
         }
 
-        public List<T> GetAllAsync(string where, int value)
+        public List<T> GetAllAsync(string where, string value)
         {
             string query  = $"SELECT * FROM [{tableName}] WHERE {where} = {value}";
-            using IDbConnection con = _connectionBuilder.Connection;
+            using IDbConnection con = _connectionBuilder.GetConnection;
             return con.Query<T>(query).ToList();
         }
 
-        public List<T> GetAllAsync(string where, int value, string where1, int value1)
+        public List<T> GetAllAsync(string where, string value, string where1, string value1)
         {
             string query = $"SELECT * FROM [{tableName}] WHERE {where} = {value} AND {where1} = {value1}";
-            using IDbConnection con = _connectionBuilder.Connection;
+            using IDbConnection con = _connectionBuilder.GetConnection;
             return con.Query<T>(query).ToList();
         }
 
        
-        public T GetAsync(int id)
+        public T GetAsync(string id)
         {
             string query = $"SELECT * FROM [{tableName}] WHERE Id = {id} ";
-            using IDbConnection con = _connectionBuilder.Connection;
+            using IDbConnection con = _connectionBuilder.GetConnection;
             return con.Query<T>(query).First();
         }
 
-        public T GetAsync(string where, int value)
+        public T GetAsync(string where, string value)
         {
             string query = $"SELECT * FROM [{tableName}] WHERE {where} = {value} ";
-            using IDbConnection con = _connectionBuilder.Connection;
+            using IDbConnection con = _connectionBuilder.GetConnection;
             return con.Query<T>(query).First();
         }
-        public T GetAsync(string where, int value, string where1, int value1)
+        public T GetAsync(string where, string value, string where1, string value1)
         {
 
             string query = $"SELECT * FROM [{tableName}] WHERE {where} = {value} AND {where1} = {value1}";
-            using IDbConnection con = _connectionBuilder.Connection;
+            using IDbConnection con = _connectionBuilder.GetConnection;
             return con.Query<T>(query).First();
         }
 
         public bool InsertAsync(T model)
         {
-            //this i have to do and before doing this i have to just fix int to string for values because somethimes someone uses string 
+            //this i have to do and before doing this i have to just fix string to string for values because somethimes someone uses string 
             //values to check where 
             throw new NotImplementedException();
         }
