@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KeplerCrud.Utility
+﻿namespace KeplerCrud.Utility
 {
-
+    /// <summary>
+    /// Attribute For Table
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public class KeplerTableAttribute : Attribute
     {
         public string TableName { get; set; }
+        /// <summary>
+        /// Provide Table Name 
+        /// </summary>
+        /// <param name="name"></param>
         public KeplerTableAttribute(string name)
         {
             TableName = name;

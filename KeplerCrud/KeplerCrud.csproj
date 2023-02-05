@@ -4,12 +4,15 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>rng.KeplerCrud</PackageId>
+    <PackageId>Rng.KeplerCrud</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>KeplerCrud</Title>
     <Authors>RajNarayanGupta</Authors>
     <Company>RNG</Company>
     <Copyright>MIT</Copyright>
+    <PackageProjectUrl>https://github.com/rajguptaH/KeplerCrud</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/rajguptaH/KeplerCrud</RepositoryUrl>
+    <PackageTags>generic repository</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +20,10 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
 
 </Project>

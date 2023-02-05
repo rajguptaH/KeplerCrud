@@ -2,12 +2,12 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace KeplerCrud.ConnectionBuilder
+namespace KeplerCrud.KeplerBuilder
 {
-    public class ConnectionBuilder : IConnectionBuilder
+    public class KeplerBuilder : IKeplerBuilder
     {
         private readonly IConfiguration _configuration;
-        public ConnectionBuilder(IConfiguration configuration)
+        public KeplerBuilder(IConfiguration configuration)
         {
 
            _configuration = configuration;
@@ -15,7 +15,7 @@ namespace KeplerCrud.ConnectionBuilder
         /// <summary>
         ///  services.AddSingleton<IConnectionBuilder, ConnectionString>();
         /// </summary>
-        public string ConString => _configuration["ConnectionString:Value"];
+        public string ConString => _configuration["ConnectionStrings:Value"];
         public IDbConnection GetConnection
         {
             get

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KeplerCrud.Utility
+﻿namespace KeplerCrud.Utility
 {
+    /// <summary>
+    /// Set The Column Name Which Exist in Database Or Put Empty () For Using Property Name As Well As
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class KeplerColumnAttribute : Attribute
     {
@@ -14,6 +11,9 @@ namespace KeplerCrud.Utility
         {
             ColumnName = columnName;
         }
+        /// <summary>
+        /// This Will Take Property Name Automaticly
+        /// </summary>
         public KeplerColumnAttribute()
         {
 
