@@ -13,7 +13,7 @@
     <PackageProjectUrl>https://rajguptah.github.io</PackageProjectUrl>
     <RepositoryUrl>https://github.com/rajguptaH/</RepositoryUrl>
     <PackageTags>generic repository automaticCrud Automatic Asp netcore visual </PackageTags>
-    <Version>6.1.0</Version>
+    <Version>6.2.2</Version>
     <Description>Using This Library You Can Perform Crud Operation Automaticly Visit My Github Repository</Description>
     <PackageIcon>kepler.png</PackageIcon>
     <PackageReadmeFile>kepler.md</PackageReadmeFile>

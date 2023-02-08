@@ -9,12 +9,10 @@ namespace KeplerCrud.Repository
     public class KeplerRepository<T> : IKeplerRepository<T> where T : class
     {
         string tableName;
-        string isDeleted;
         List<string> columns;
         private readonly IKeplerConnection _connectionBuilder;
         public KeplerRepository(IKeplerConnection connectionBuilder)
         {
-            isDeleted = "IsDeleted = 0";
             _connectionBuilder = connectionBuilder;
             tableName = Kepler22.GetTableName<T>();
             columns = Kepler22.GetDbColumnName<T>();
@@ -30,8 +28,7 @@ namespace KeplerCrud.Repository
                 if (columnBase)
                 {
                     var keplerQuery = new StringBuilder($"SELECT {GenerateColumns()}");
-                    keplerQuery.Remove(keplerQuery.Length - 1, 1);
-                    keplerQuery.Append($"FROM [{tableName}] TN");
+                    keplerQuery.Append($" FROM [{tableName}] TN");
                     keplerQuery.Append($"{GenerateConditons(conditions)}");
                     query = keplerQuery.ToString();
                 }
@@ -39,7 +36,6 @@ namespace KeplerCrud.Repository
                 {
                     query = $"SELECT * FROM [{tableName}] TN {GenerateConditons(conditions)}";
                 }
-
                 return con.Query<T>(query).ToList();
             }
             catch (Exception ex)
@@ -57,12 +53,12 @@ namespace KeplerCrud.Repository
                 if (columnBase)
                 {
                     var keplerQuery = new StringBuilder($"SELECT {GenerateColumns()} ");
-                    keplerQuery.Append($"FROM [{tableName}] TN");
+                    keplerQuery.Append($" FROM [{tableName}] TN");
                     query = keplerQuery.ToString();
                 }
                 else
                 {
-                    query = $"SELECT * FROM [{tableName}]";
+                    query = $"SELECT * FROM [{tableName}] WHERE IsDeleted = 0";
                 }
 
                 return con.Query<T>(query).ToList();
@@ -81,8 +77,7 @@ namespace KeplerCrud.Repository
                 if (columnBase)
                 {
                     var keplerQuery = new StringBuilder($"SELECT {GenerateColumns()}");
-                    keplerQuery.Remove(keplerQuery.Length - 1, 1);
-                    keplerQuery.Append($"FROM [{tableName}] TN {GenerateConditons(conditions)}");
+                    keplerQuery.Append($" FROM [{tableName}] TN {GenerateConditons(conditions)}");
                     query = keplerQuery.ToString();
                 }
                 else
@@ -170,10 +165,17 @@ namespace KeplerCrud.Repository
         }
         public string GenerateConditons(List<ConditionPair> conditions)
         {
-            var keplerQurey = new StringBuilder($"WHERE {isDeleted} AND ");
-            conditions.ForEach(x => keplerQurey.Append($"TN.{x.Where} = '{x.Value}' AND"));
+            var keplerQurey = new StringBuilder($"WHERE TN.IsDeleted = 0 AND ");
+            if (conditions.Count() > 0)
+            {
+                conditions.ForEach(x => keplerQurey.Append($"TN.{x.Where} = '{x.Value}' AND"));
 
-            keplerQurey.Remove(keplerQurey.Length - 3, 3);
+                keplerQurey.Remove(keplerQurey.Length - 3, 3);
+            }
+            else
+            {
+                keplerQurey.Remove(keplerQurey.Length - 4, 4);
+            }
             return keplerQurey.ToString();
         }
         public string GenerateInsertQuery()
@@ -189,10 +191,10 @@ namespace KeplerCrud.Repository
         }
         public string GenerateUpdateQuery()
         {
-            var keplerQuery = new StringBuilder($"UPDATE [{tableName}] SET");
+            var keplerQuery = new StringBuilder($"UPDATE [{tableName}] SET ");
             columns.ForEach(x => { if (x.ToLower() != "id") { keplerQuery.Append($"{x} = @{x},"); } });
             keplerQuery.Remove(keplerQuery.Length - 1, 1);
-            keplerQuery.Append("WHERE Id = @Id");
+            keplerQuery.Append(" WHERE Id = @Id");
             return keplerQuery.ToString();
         }
         #endregion
