@@ -1,7 +1,7 @@
 ﻿namespace KeplerCrud.Utility
 {
     /// <summary>
-    /// Set The Column Name Which Exist in Database Or Put Empty () For Using Property Name As Well As
+    /// Use As Column Name Which Exist in Database Or Put Empty () For Using Property Name As Well As
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class KeplerColumnAttribute : Attribute

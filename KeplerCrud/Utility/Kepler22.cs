@@ -2,7 +2,7 @@
 
 namespace KeplerCrud.Utility
 {
-    public class Kepler22
+    internal static class Kepler22
     {
         public static string GetTableName<T>() where T : class
         {

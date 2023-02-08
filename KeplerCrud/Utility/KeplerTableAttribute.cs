@@ -1,7 +1,7 @@
 ﻿namespace KeplerCrud.Utility
 {
     /// <summary>
-    /// Attribute For Table
+    /// Provide Your Table Name
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public class KeplerTableAttribute : Attribute
