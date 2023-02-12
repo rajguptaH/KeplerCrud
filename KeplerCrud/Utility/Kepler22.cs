@@ -1,12 +1,15 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace KeplerCrud.Utility
 {
     internal static class Kepler22
     {
-        public static string GetTableName<T>() where T : class
+        public static string GetTableName<T>()
         {
-            var tableAttribute = typeof(T).GetCustomAttribute(typeof(KeplerTableAttribute),true) as KeplerTableAttribute;
+            var tableAttribute = typeof(T).GetCustomAttribute(typeof(KeplerTableAttribute), true) as KeplerTableAttribute;
             if (tableAttribute != null)
             {
                 return tableAttribute.TableName;
@@ -34,5 +37,22 @@ namespace KeplerCrud.Utility
             }
             return _columns;
         }
+        public static string GetPKey<T>()
+        {
+            string _columns = null;
+            PropertyInfo[] propertieList = typeof(T).GetProperties();
+            var attributePair = propertieList.Where(x => Attribute.IsDefined(x, typeof(KeplerPKeyAttribute)))
+                .Select(x => new KeyValuePair<string, string>(x.GetCustomAttribute<KeplerPKeyAttribute>().PKey, x.Name)).First();
+            if (attributePair.Key != null)
+            {
+                _columns = attributePair.Key;
+            }
+            else
+            {
+                _columns = attributePair.Value;
+            }
+            return _columns;
+        }
+
     }
 }

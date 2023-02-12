@@ -1,4 +1,6 @@
-﻿namespace KeplerCrud.Utility
+﻿using System;
+
+namespace KeplerCrud.Utility
 {
     /// <summary>
     /// Provide Your Table Name
