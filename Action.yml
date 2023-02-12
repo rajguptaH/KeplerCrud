@@ -1,0 +1,2 @@
+- name: Go Dependency Submission
+  uses: actions/go-dependency-submission@v1.0.2
