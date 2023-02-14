@@ -9,9 +9,8 @@
 - Give A Like To This Repo If you Found Something Helpful
 - ✨[RNG](https://github.com/rajguptaH)✨
 ## Requirments
-- .net 6.0 or newest 
-- Currently It Is Supporting For .net 6.0 or later And Working On this To Work With older versions also
-- Two Columns Is Required Id And IsDeleted Below Example Of A Table 
+- .net 3.1 or newest 
+-  Column Is Required IsDeleted Below Example Of A Table 
  ```sql
  CREATE TABLE [dbo].[Person](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -29,7 +28,10 @@ ALTER TABLE [dbo].[UiPageType] ADD  CONSTRAINT [DF_UiPageType_IsDeleted]  DEFAUL
 GO
 ```
 ## Setup 
-- Go On Nuget Install This Package
+- Go On Nuget Install This Package or Using Command Line 
+```cmd
+dotnet add package Rng.KeplerCrud --version 3.2.1
+```
 - Then Just Add Connection String In Your AppSettings.json Ex is Given Below
 ```json
 {
