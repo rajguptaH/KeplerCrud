@@ -30,7 +30,7 @@ GO
 ## Setup 
 - Go On Nuget Install This Package or Using Command Line 
 ```cmd
-dotnet add package Rng.KeplerCrud --version 3.2.1
+$ dotnet add package Rng.KeplerCrud --version 3.2.1
 ```
 - Then Just Add Connection String In Your AppSettings.json Ex is Given Below
 ```json
