@@ -47,15 +47,7 @@ $ dotnet add package Rng.KeplerCrud --version 3.2.1
   "AllowedHosts": "*"
 }
 ```
-- Then Go To Project Startup.cs File Just Add These Lines
-```c#
-//First Of all Just Include This Namespace
-using KeplerCrud.Connection;
-/* This KeplerConnection Will Automaticlly read your 
-appsettings.json file And Take Connection String */
-builder.Services.AddSingleton<IKeplerConnection, KeplerConnection>();
-```
-- And Then Add KeplerTable and KeplerColumn In Your Model Like This
+
 ```c#
 //Don't Forget To Include KeplerCrud.Utility Namespace 
  using KeplerCrud.Utility;
@@ -76,17 +68,14 @@ namespace WebApp.Models
 ```c#
 //namespace for KeplerRepository
 using KeplerCrud.Repostiory
-private readonly IKeplerRepository<YourModel> _keplerRepository;
 
-        public Constructor(IKeplerRepository<UserDTO> keplerRepository)
-        {
-            _keplerRepository = keplerRepository;
-        }
+        //You Have To Create A Object of IDbConnection First Like This With Your Connection String 
+	using IDbConnection con = _connectionBuilder.connectionProp;
+	//then Just Call methods And Perform CRUD 
+	var listOfObject = con.GetAll(true);
+	//Thats It 
 ```
-- before using this _keplerRepository. Methods You have to register this model In Startup with This IKeplerRepostory
-```c#
-builder.Services.AddScoped<IKeplerRepository<YourModel>, KeplerRepository<YourModel>>();
-```
+
 Thats It 
 ## Questions 
 - Q1 Why we You need this 
@@ -94,8 +83,8 @@ Thats It
 - Q2 What is columnBase Bool Parameter 
 - Ans. If You Pass True in that then it will Only Use those Columns Where you have used KeplerColumn Attribute And Other Columns Will Be Ignored
 ## Thanks 
-```c#
-Thanks Myself Raj Narayan Gupta
+```sql
+Thanks❤  Myself Raj Narayan Gupta
 ```
 - I would Like To collaborate With Other Developers💛
 - Mail : Rajkumar00999.rk@gmail.com
