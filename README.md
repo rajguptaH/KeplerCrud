@@ -82,6 +82,21 @@ Thats It
 - Ans. This Is Light Weight and Fast To Perform CRUD And Using This you Don't need to write Much Code 
 - Q2 What is columnBase Bool Parameter 
 - Ans. If You Pass True in that then it will Only Use those Columns Where you have used KeplerColumn Attribute And Other Columns Will Be Ignored
+- Q3 What is List of ConditionPair or condition 
+- Ans. If you create a object like below and pass this object then it will filter out whatever condition you want
+	```c#
+	var conditions = new List<ConditionPair>();
+	conditions.Add(new ConditionPair{ Where = "Id", Value = "2"};
+	```
+## Methods 
+
+```c#
+                         =============== GetAll(List<ConditionPair> conditions, bool columnBase) ================
+/* use IdbConnection Object 
+   Before Using Methods Use Attributes In that models */
+ con.GetAll<Model>( List<ConditionPair> conditions, bool columnBase)
+                         =============== GetAll(List<ConditionPair> conditions, bool columnBase) ================
+```
 ## Thanks 
 ```sql
 Thanks❤  Myself Raj Narayan Gupta
