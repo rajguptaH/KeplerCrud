@@ -3,8 +3,6 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://instagram.com/bug__developer)
 
-
-
 - This is Helpful For Do Crud Operation Automaticlly 
 - Give A Like To This Repo If you Found Something Helpful
 - ✨[RNG](https://github.com/rajguptaH)✨
@@ -19,11 +17,13 @@ Tables of contents
 
 *******
 <div id="whatiskepler"/>
+
 ## What Is KeplerCrud
 - KeplerCrud Is Just A Tool For Generic CRUD(Create Read Update Delete) Using This You Can Save Your Time Creating Duplicate Queries And Services 
 - This Is light Wieght and Easy To Use Package
 
 <div id="requirment"/>
+
 ## Requirments
 - .net 3.1 or newest 
 - Table In Database and Connected with Sql Server
@@ -41,9 +41,10 @@ GO
 
 ```
 <div id="setup"/>
+
 ## Setup 
 - Go On Nuget Install This Package or Using Command Line 
-```cmd
+```shell
 $ dotnet add package Rng.KeplerCrud --version 3.2.1
 ```
 - Then Just Add Connection String In Your AppSettings.json Ex is Given Below
@@ -93,6 +94,7 @@ using KeplerCrud.Repostiory
 ```
 Thats It 
 <div id="questions"/>
+
 ## Questions 
 - Q1 Why we You need this 
 - Ans. This Is Light Weight and Fast To Perform CRUD And Using This you Don't need to write Much Code 
@@ -105,6 +107,7 @@ Thats It
 	conditions.Add(new ConditionPair{ Where = "Id",Operator = "=", Value = "2"};
 	```
 <div id="methods"/>
+
 ## Methods 
 
 ```c#
