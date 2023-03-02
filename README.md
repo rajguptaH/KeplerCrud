@@ -101,7 +101,7 @@ Thats It
 - Q2 What is columnBase Bool Parameter 
 - Ans. If You Pass True in that then it will Only Use those Columns Where you have used KeplerColumn Attribute And Other Columns Will Be Ignored
 - Q3 What is List of ConditionPair or condition 
-- Ans. If you create a object like below and pass this object then it will filter out whatever condition you want
+- Ans. If you create a object like below and pass this object then it will filter out whatever condition you put
 	```c#
 	var conditions = new List<ConditionPair>();
 	conditions.Add(new ConditionPair{ Where = "Id",Operator = "=", Value = "2"};
