@@ -15,8 +15,6 @@
  CREATE TABLE [dbo].[Person](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](100) NOT NULL,
-  /****** Column: IsDeleted  This Is Used For Soft Delete Because I Have Implemented A Condition In Query ******/
-	[IsDeleted] [bit] NOT NULL,
  CONSTRAINT [PK_Person] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -24,8 +22,6 @@
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[UiPageType] ADD  CONSTRAINT [DF_UiPageType_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
-GO
 ```
 ## Setup 
 - Go On Nuget Install This Package or Using Command Line 
@@ -86,16 +82,30 @@ Thats It
 - Ans. If you create a object like below and pass this object then it will filter out whatever condition you want
 	```c#
 	var conditions = new List<ConditionPair>();
-	conditions.Add(new ConditionPair{ Where = "Id", Value = "2"};
+	conditions.Add(new ConditionPair{ Where = "Id",Operator = "=", Value = "2"};
 	```
 ## Methods 
 
 ```c#
-                         =============== GetAll(List<ConditionPair> conditions, bool columnBase) ================
-/* use IdbConnection Object 
-   Before Using Methods Use Attributes In that models */
+/* use IdbConnection Object Before Using Methods Use Attributes In that models */
+                        /* =============== GetAll(List<ConditionPair> conditions, bool columnBase) ================*/
  con.GetAll<Model>( List<ConditionPair> conditions, bool columnBase)
-                         =============== GetAll(List<ConditionPair> conditions, bool columnBase) ================
+ //This Method Will Return All Records Based On Condtions 
+                        /* =============== GetAll<T>(bool columnBase) ================
+ con.GetAll<Model>( bool columnBase)
+ //This Method Will Return All Records
+                        /* =============== Get<T>(List<ConditionPair> conditions, bool columnBase ) ================*/
+ con.Get<Model>(List<ConditionPair> conditions, bool columnBase )
+ //This Method Will Return Record Based On Condtions 
+                                        /* =============== Insert<T>(T model) ================*/
+ con.Insert<Model>(T model)
+ //This Method Will Insert The Record 
+                                        /* =============== Update<T>(T model) ================*/
+ con.Update<Model>(T model)
+ //This Method Will Update The Record 
+                                       /*  =============== Delete<T>(string pvalue) ================*/
+ con.Delete<Model>(string pvalue)
+ //This Method Will Delete Record
 ```
 ## Thanks 
 ```sql
