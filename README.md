@@ -8,9 +8,26 @@
 - This is Helpful For Do Crud Operation Automaticlly 
 - Give A Like To This Repo If you Found Something Helpful
 - ✨[RNG](https://github.com/rajguptaH)✨
+
+*******
+Tables of contents  
+ 1. [What is KeplerCrud? & Why You Need This](#whatiskepler)
+ 2. [Requirments?](#requirment)
+ 3. [How To Setup ?](#setup)
+ 4. [Question & Answer](#questions)
+ 5. [Methods](#methods)
+
+*******
+<div id="whatiskepler"/>
+## What Is KeplerCrud
+- KeplerCrud Is Just A Tool For Generic CRUD(Create Read Update Delete) Using This You Can Save Your Time Creating Duplicate Queries And Services 
+- This Is light Wieght and Easy To Use Package
+
+<div id="requirment"/>
 ## Requirments
 - .net 3.1 or newest 
--  Column Is Required IsDeleted Below Example Of A Table 
+- Table In Database and Connected with Sql Server
+- IDbConnection Object
  ```sql
  CREATE TABLE [dbo].[Person](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -23,6 +40,7 @@
 GO
 
 ```
+<div id="setup"/>
 ## Setup 
 - Go On Nuget Install This Package or Using Command Line 
 ```cmd
@@ -38,25 +56,27 @@ $ dotnet add package Rng.KeplerCrud --version 3.2.1
     }
   },
   "ConnectionStrings": {
-    "Value": "Server=localhost;Database=WFON; User ID=sa;Password=admin;"
+    "Value": "Server=localhost;Database=DatabaseName; User ID=username;Password=password;"
   },
   "AllowedHosts": "*"
 }
 ```
-
+- Then Add Attributes in Model
 ```c#
 //Don't Forget To Include KeplerCrud.Utility Namespace 
  using KeplerCrud.Utility;
 
-namespace WebApp.Models
+namespace RNG.Models
 {
-    [KeplerTable("UiPageType")]
-    public class UserDTO
+    [KeplerTable("User")] // This Attribute Tells That Table Name Is User
+    public class User
     {
-        [KeplerColumn("Id")]
+    	[KeplerPKey("Id")] // This Attribute Tells That This Property Is Primary Key Of User Table
+        [KeplerColumn("Id")] // This Attribute Tells That This Property Is For Id Column Of User Table
         public int Id { get; set; }
-        [KeplerColumn] // If You Don't Use This Attribute Here and put colunmBase Fetch Then You Won't Get This Column Value Or You Can't Save This
+        [KeplerColumn] // This Attribute Takes Property Name As Column Of User Table 
         public string Name { get; set; }
+	// If You Don't Use KeplerColumn Attribute and put colunmBase Fetch, Insert or Update Then You Won't Get This Column Value Or You Can't Save This
     }
 }
 ```
@@ -71,8 +91,8 @@ using KeplerCrud.Repostiory
 	var listOfObject = con.GetAll(true);
 	//Thats It 
 ```
-
 Thats It 
+<div id="questions"/>
 ## Questions 
 - Q1 Why we You need this 
 - Ans. This Is Light Weight and Fast To Perform CRUD And Using This you Don't need to write Much Code 
@@ -84,6 +104,7 @@ Thats It
 	var conditions = new List<ConditionPair>();
 	conditions.Add(new ConditionPair{ Where = "Id",Operator = "=", Value = "2"};
 	```
+<div id="methods"/>
 ## Methods 
 
 ```c#
